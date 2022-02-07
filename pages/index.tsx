@@ -1,11 +1,27 @@
-import type { NextPage } from 'next'
+import { Header } from '../components/header/Header';
 
-const Home: NextPage = () => {
+interface props {
+  categories: string[];
+}
+
+const Home = ({ categories }: props) => {
 
   return (
-    <div className="home">
-    </div>
+    <>
+      <Header categories={categories} />
+    </>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch('https://fakestoreapi.com/products/categories')
+  const categories = await res.json();
+
+  return {
+    props: {
+      categories
+    }
+  }
 }
 
 export default Home;
