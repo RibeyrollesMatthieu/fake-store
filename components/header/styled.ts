@@ -10,12 +10,21 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const NavWrapper = styled.nav`
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-left: auto;
+    padding: .5rem;
+    height: 3rem;
+    margin: .5rem;
+  }
 `;
 
 export const CategoriesWrapper = styled.ul`
   display: flex;
-  justify-content: space-between;
-  aling-items: center;
+  flex-grow: 1;
+  padding: 0 5rem 0 1rem;
 `;
 
 export const CategoryElement = styled.li`
@@ -25,7 +34,7 @@ export const CategoryElement = styled.li`
     text-decoration: inherit;
     color: inherit;
     text-transform: capitalize;
-    padding: 1rem;
+    padding-right: 2rem;
     display: block;
 
     white-space: nowrap;
