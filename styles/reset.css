@@ -20,6 +20,8 @@ body {
   letter-spacing: .05rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  /* position: absolute; */
 }
 
 img, picture, video, canvas, svg {

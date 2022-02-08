@@ -1,9 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { CategoryWrapper, ProductsWrapper } from '../../components/category/styled';
-import { Header } from '../../components/header/Header';
+import { CategoryWrapper, ProductsWrapper, Title } from '../../components/category/styled';
 import { Product } from '../../components/product/Product';
-import { Title } from '../../components/product/styled';
 import { I_productType } from '../../redux/app/types';
 
 
