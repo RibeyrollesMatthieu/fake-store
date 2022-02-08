@@ -1,23 +1,16 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
+import { CategoryWrapper, ProductsWrapper } from '../../components/category/styled';
+import { Header } from '../../components/header/Header';
+import { Product } from '../../components/product/Product';
+import { Title } from '../../components/product/styled';
+import { I_productType } from '../../redux/app/types';
 
-interface I_categoryState {
-  id: number;
-  title: string;
-  category: string;
-  description: string;
-  imamge: string;
-  price: number;
-  rating: {
-    rate: number;
-    count: number;
-  }
-}
 
 const Category = () => {
 
   const [ category, setCategory ] = useState<string>('');
-  const [ products, setProducts ] = useState<I_categoryState[]>([]);
+  const [ products, setProducts ] = useState<I_productType[]>([]);
   const router = useRouter();
 
   useEffect(() => {
@@ -31,17 +24,19 @@ const Category = () => {
   
 
   return (
-    <div className="category">
-      Category: { category }
+    <>
+      <CategoryWrapper>
 
-      <ul>
-        {
-          products.map(product => (
-            <li key={product.title}>{product.title}</li>
-          ))
-        }
-      </ul>
-    </div>
+        <Title>Category: {category}</Title>
+        <ProductsWrapper>
+          {
+            products.map(product => (
+              <Product key={product.title} product={product} />
+            ))
+          }
+        </ProductsWrapper>
+      </CategoryWrapper>
+    </>
   )
 };
 

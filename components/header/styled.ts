@@ -26,5 +26,10 @@ export const CategoryElement = styled.li`
     &:hover, &:focus {
       text-decoration: underline;
     }
+
+    &.active {
+      font-weight: 900;
+      text-decoration: underline;
+    }
   }
 `;
