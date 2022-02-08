@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { CategoryWrapper, ProductsWrapper, Title } from '../../components/category/styled';
+import { CategoryWrapper, Content, ProductsWrapper, Title } from '../../components/category/styled';
 import { Product } from '../../components/product/Product';
+import { Spinner } from '../../components/spinner/Spinner';
 import { I_productType } from '../../redux/app/types';
 
 
@@ -15,29 +16,39 @@ const Category = () => {
   useEffect(() => {
     setIsLoaded(false);
     const routerCategory: string = router.query?.category as string;
-    setCategory(routerCategory);
 
-    fetch(`https://fakestoreapi.com/products/category/${routerCategory}`)
-      .then(res=>res.json())
-      .then(json => setProducts(json))
-      .then(() => setIsLoaded(true));
+    if (routerCategory) {
+      console.log('coucou')
+      setCategory(routerCategory);
+
+      fetch(`https://fakestoreapi.com/products/category/${routerCategory}`)
+        .then(res => res.json())
+        .then(json => setProducts(json))
+        .then(() => setIsLoaded(true));
+    }    
   }, [router.query])
   
 
   return (
     <>
-      <CategoryWrapper>
+      <CategoryWrapper >
 
         <Title>Category: {category}</Title>
-        <ProductsWrapper>
-          {
-            isLoaded
-              ? products.map(product => (
-                  <Product key={product.title} product={product} />
-                ))
-              : <>Loading..</>
-          }
-        </ProductsWrapper>
+        
+        <Content isLoaded={isLoaded}>
+        {
+          isLoaded
+            ? (<ProductsWrapper>
+                {
+                  products.map(product => (
+                    <Product key={product.title} product={product} />
+                  ))
+                }
+              </ProductsWrapper>)
+            : <Spinner />
+        }
+        </Content>
+        
       </CategoryWrapper>
     </>
   )

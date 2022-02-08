@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.header`
-  overflow-x: scroll;
   background: lightblue;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
 `;
 
 export const NavWrapper = styled.nav`
