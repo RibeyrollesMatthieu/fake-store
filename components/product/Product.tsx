@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { I_productType } from '../../redux/app/types';
 import { ImageWithErrorHandle } from '../image/ImageWithErrorHandle';
 import { AddToCartButton, ImageWrapper, ProductPrice, ProductRating, ProductWrapper } from './styled';
@@ -13,7 +12,7 @@ export const Product = ({ product }: props) => {
   return (
     <ProductWrapper>
       <ImageWrapper>
-        <ImageWithErrorHandle alt={product.title} src={product.image} height='100%' width='100%' />
+        <ImageWithErrorHandle alt={product.title} src={product.image} layout='fill' objectFit='contain' />
       </ImageWrapper>
 
       <div> {product.title} </div>

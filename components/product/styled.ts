@@ -12,9 +12,12 @@ export const ImageWrapper = styled.div`
   position: relative;
   text-align: center;
   margin-bottom: 1rem;
+  min-height: 8rem !important;
 
   img {
-    min-height: 8rem !important;
+    /* height: 100%; */
+    /* width: auto; */
+    aspect-ratio: 1/1 !important;
   }
 `;
 

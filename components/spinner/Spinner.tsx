@@ -1,5 +1,5 @@
 import React from 'react';
-import { CircleLoad, CircleLoad__one, CircleLoad__three, CircleLoad__two, Loader, Point__one, Point__three, Point__two, Svg } from './styled';
+import { CircleLoad__one, CircleLoad__three, CircleLoad__two, Loader, Point__one, Point__three, Point__two, Svg } from './styled';
 
 export const Spinner = () => {
   return (

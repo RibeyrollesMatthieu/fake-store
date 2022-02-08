@@ -18,7 +18,6 @@ const Category = () => {
     const routerCategory: string = router.query?.category as string;
 
     if (routerCategory) {
-      console.log('coucou')
       setCategory(routerCategory);
 
       fetch(`https://fakestoreapi.com/products/category/${routerCategory}`)
