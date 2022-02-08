@@ -20,7 +20,7 @@ export const ImageWrapper = styled.div`
 
 export const ProductPrice = styled.div`
   color: rgba(200, 24, 0);
-  font-weight: 900;
+  font-weight: 800;
   margin-bottom: 1rem;
 `;
 

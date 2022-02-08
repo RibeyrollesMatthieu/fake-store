@@ -32,7 +32,6 @@ export const CategoryElement = styled.li`
 
     &.active {
       font-weight: 900;
-      text-decoration: underline;
     }
   }
 `;

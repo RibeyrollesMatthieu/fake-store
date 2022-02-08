@@ -9,15 +9,18 @@ const Category = () => {
 
   const [ category, setCategory ] = useState<string>('');
   const [ products, setProducts ] = useState<I_productType[]>([]);
+  const [ isLoaded, setIsLoaded ] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
+    setIsLoaded(false);
     const routerCategory: string = router.query?.category as string;
     setCategory(routerCategory);
 
     fetch(`https://fakestoreapi.com/products/category/${routerCategory}`)
       .then(res=>res.json())
       .then(json => setProducts(json))
+      .then(() => setIsLoaded(true));
   }, [router.query])
   
 
@@ -28,9 +31,11 @@ const Category = () => {
         <Title>Category: {category}</Title>
         <ProductsWrapper>
           {
-            products.map(product => (
-              <Product key={product.title} product={product} />
-            ))
+            isLoaded
+              ? products.map(product => (
+                  <Product key={product.title} product={product} />
+                ))
+              : <>Loading..</>
           }
         </ProductsWrapper>
       </CategoryWrapper>
