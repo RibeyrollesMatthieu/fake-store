@@ -31,7 +31,7 @@ export const Header = () => {
           {
             categories.map(category => (
               <CategoryElement key={category}>
-                <Link href={`/${category}`}>
+                <Link href={`/category/${category}`}>
                   {category}
                 </Link>
               </CategoryElement>
