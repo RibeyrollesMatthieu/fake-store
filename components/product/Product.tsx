@@ -1,5 +1,7 @@
 import React from 'react';
+import { useAppDispatch } from '../../redux/app/hooks';
 import { I_productType } from '../../redux/app/types';
+import { addProduct } from '../../redux/features/cart/cartSlice';
 import { ImageWithErrorHandle } from '../image/ImageWithErrorHandle';
 import { AddToCartButton, ImageWrapper, ProductPrice, ProductRating, ProductWrapper } from './styled';
 
@@ -8,6 +10,8 @@ interface props {
 }
 
 export const Product = ({ product }: props) => {
+
+  const dispatch = useAppDispatch();
 
   return (
     <ProductWrapper>
@@ -19,7 +23,7 @@ export const Product = ({ product }: props) => {
       <ProductPrice> {product.price}€ </ProductPrice>
       <ProductRating> {product.rating.rate}/5 ({product.rating.count} votes) </ProductRating>
 
-      <AddToCartButton>Add to cart</AddToCartButton>
+      <AddToCartButton onClick={() => dispatch(addProduct(product))} >Add to cart</AddToCartButton>
     </ProductWrapper>
   )
 };
