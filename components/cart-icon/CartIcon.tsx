@@ -10,7 +10,11 @@ export const CartIcon = () => {
   return (
       <>
         {/* <span>{cart.products.length}products</span> */}
-        <span>{cart.total}€</span>
+        <span>{
+          cart.products.length === 0
+            ? ''
+            : `${cart.total}€ (${cart.products.length})`
+        }</span>
 
         <Link href='/cart' passHref={true}>
           <CartWrapper>
