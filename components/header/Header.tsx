@@ -9,6 +9,7 @@ export const Header = () => {
   const [ activeCategory, setActiveCategory ] = useState<string>('');
 
   useEffect(() => {
+    /* 55rem in pixels for a 16px fontsize */
     const mediaQuery = window.matchMedia('(max-width: 880px)');
 
     /* prevent some flashes when a user goes from medium to small screen */
