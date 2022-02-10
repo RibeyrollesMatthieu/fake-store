@@ -11,13 +11,15 @@ interface I_cartState {
   content: {
     products: I_productLineState[];
     total: number;
+    quantity: number;
   }
 }
 
 const initialState: I_cartState = {
   content: {
     products: [],
-    total: 0
+    total: 0,
+    quantity: 0
   }
 }
 
@@ -43,13 +45,15 @@ const cartSlice = createSlice({
 
           return product;
         }),
-        total: (addedIn) ? convertToCentsThenEuros(state.content.total + action.payload.product.price * action.payload.quantity) : state.content.total
+        total: (addedIn) ? convertToCentsThenEuros(state.content.total + action.payload.product.price * action.payload.quantity) : state.content.total,
+        quantity: (addedIn) ? state.content.quantity + action.payload.quantity : state.content.quantity
       }
 
       if (!addedIn) {
         state.content = {
           products: [ ...state.content.products, action.payload ],
-          total: convertToCentsThenEuros(state.content.total + action.payload.product.price * action.payload.quantity)
+          total: convertToCentsThenEuros(state.content.total + action.payload.product.price * action.payload.quantity),
+          quantity: state.content.quantity + action.payload.quantity
         }
       }
     },
@@ -59,7 +63,8 @@ const cartSlice = createSlice({
           if (product.product.title === action.payload.product.title) return;
           return product;
         }),
-        total: convertToCentsThenEuros(state.content.total - action.payload.product.price * action.payload.quantity)
+        total: convertToCentsThenEuros(state.content.total - action.payload.product.price * action.payload.quantity),
+        quantity: state.content.quantity - action.payload.quantity
       }
     },
     removeInstanceOfProduct: (state, action: PayloadAction<I_productLineState>) => {
@@ -71,7 +76,8 @@ const cartSlice = createSlice({
             if (product.product.title === action.payload.product.title) return;
             return product;
           }),
-          total: convertToCentsThenEuros(state.content.total - action.payload.product.price * action.payload.quantity)
+          total: convertToCentsThenEuros(state.content.total - action.payload.product.price * action.payload.quantity),
+          quantity: state.content.quantity - action.payload.quantity
         }
       }
       else {
@@ -86,7 +92,8 @@ const cartSlice = createSlice({
 
             return product;
           }),
-          total: convertToCentsThenEuros(state.content.total - action.payload.product.price)
+          total: convertToCentsThenEuros(state.content.total - action.payload.product.price),
+          quantity: state.content.quantity - action.payload.quantity
         }
       }
     },
