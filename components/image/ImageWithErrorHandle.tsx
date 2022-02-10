@@ -9,7 +9,6 @@ interface I_image {
   layout?: 'intrinsic' | 'fixed' | "responsive" | 'fill';
   objectFit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down';
 }
-
 export const ImageWithErrorHandle = ({ alt, ...props}: I_image) => {
 
   const shimmer = (w: number, h: number) => `

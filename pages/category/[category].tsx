@@ -14,16 +14,22 @@ const Category = () => {
   const router = useRouter();
 
   useEffect(() => {
-    setIsLoaded(false);
     const routerCategory: string = router.query?.category as string;
 
-    if (routerCategory) {
-      setCategory(routerCategory);
+    const fetchData = async () => {
+      setIsLoaded(false);
 
       fetch(`https://fakestoreapi.com/products/category/${routerCategory}`)
         .then(res => res.json())
         .then(json => setProducts(json))
-        .then(() => setIsLoaded(true));
+        .then(() => {
+          setCategory(routerCategory);
+          setIsLoaded(true);
+        });
+    }
+
+    if (routerCategory) {
+      fetchData();
     }    
   }, [router.query])
   
@@ -32,7 +38,7 @@ const Category = () => {
     <>
       <CategoryWrapper >
 
-        <Title>Category: {category}</Title>
+        <Title>{isLoaded ? `Category: ${category}` : ''}</Title>
         
         <Content isLoaded={isLoaded}>
         {

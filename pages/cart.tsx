@@ -1,3 +1,5 @@
+import { CartButton, CartProductLine, CartProducts, CartWrapper, ClearButton, ImageWrapper, TextWrapper } from "../components/cart/styled";
+import { ImageWithErrorHandle } from "../components/image/ImageWithErrorHandle";
 import { useAppDispatch, useAppSelector } from "../redux/app/hooks";
 import { clearCart, removeInstanceOfProduct, removeProduct } from "../redux/features/cart/cartSlice";
 import { convertToCentsThenEuros } from "../utils/prices";
@@ -8,24 +10,33 @@ const Cart = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <main>
+    <CartWrapper>
       <h1>Your cart</h1>
 
-      <ul>
+      <CartProducts>
         {
           cart.products.map(product => (
-            <li key={product.product.title}>
-              {product.product.title} (x{product.quantity}): {convertToCentsThenEuros(product.quantity * product.product.price)}€
-              <button onClick={() => dispatch(removeInstanceOfProduct(product))}>Remove one</button>
-              <button onClick={() => dispatch(removeProduct(product))} >Remove all</button>
-            </li>
+            <CartProductLine key={product.product.title}>
+              <ImageWrapper>
+                <ImageWithErrorHandle alt={product.product.title} layout='fill' objectFit='contain' src={product.product.image} />
+              </ImageWrapper>
+
+              <TextWrapper>{product.product.title} (x{product.quantity}): {convertToCentsThenEuros(product.quantity * product.product.price)}€</TextWrapper>
+              
+              <CartButton onClick={() => dispatch(removeInstanceOfProduct(product))}>Remove one</CartButton>
+              <CartButton onClick={() => dispatch(removeProduct(product))} >Remove all</CartButton>
+            </CartProductLine>
           ))
         }
-      </ul>
+      </CartProducts>
 
-      <button onClick={() => dispatch(clearCart())}>Clear the cart</button>
+      <div>
+        &#8212;&nbsp;&nbsp;Total: {cart.total}€&nbsp;&nbsp;&#8212;
+      </div>
 
-    </main>
+      <ClearButton onClick={() => dispatch(clearCart())}>Clear the cart</ClearButton>
+
+    </CartWrapper>
   )
 }
 
