@@ -4,10 +4,8 @@ export const CartWrapper = styled.a`
   text-decoration: inherit;
   color: inherit;
   position: relative;
-`;
-
-export const CartQuantity = styled.span`
-
+  min-width: 2rem;
+  display: block;
 `;
 
 export const Svg = styled.svg`
