@@ -6,7 +6,6 @@ interface I_categoryWrapperProps {
 
 export const CategoryWrapper = styled.main`
   min-height: 100%;
-  padding-top: 5rem;
   display: flex;
   flex-direction: column;
 `;

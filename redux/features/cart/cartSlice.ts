@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { convertToCentsThenEuros } from "../../../utils/prices";
 import { I_productType } from "../../app/types";
 
 interface I_productLineState {
@@ -24,32 +25,59 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addProduct: (state, action: PayloadAction<I_productType>) => {
-      // state.content.products = [...state.content.products, { product: action.payload, quantity: 1 }];
+    addProduct: (state, action: PayloadAction<I_productLineState>) => {
+      /* TODO: improve it */
+      let addedIn: boolean = false;
 
       state.content = {
-        products: [...state.content.products, { product: action.payload, quantity: 1 }],
-        total: state.content.total + action.payload.price
+        /* if product is already in cart, we just update the quantity */
+        products: state.content.products.map(product => {
+          if (product.product.title === action.payload.product.title) {
+            addedIn = true;
+
+            return {
+              product: product.product,
+              quantity: product.quantity + action.payload.quantity
+            }
+          }
+
+          return product;
+        }),
+        total: (addedIn) ? convertToCentsThenEuros(state.content.total + action.payload.product.price * action.payload.quantity) : state.content.total
+      }
+
+      if (!addedIn) {
+        state.content = {
+          products: [ ...state.content.products, action.payload ],
+          total: convertToCentsThenEuros(state.content.total + action.payload.product.price * action.payload.quantity)
+        }
       }
     },
-    removeProduct: (state, action: PayloadAction<I_productLineState>) => {
-      const index = state.content.products.indexOf(action.payload);
-
-      if (index > -1) {
-        // state.content.products = state.content.products.splice(index, 1);
-        state.content = {
-          products: state.content.products.splice(index, 1),
-          total: state.content.total - action.payload.product.price
-        }
+    removeProduct: (state, action: PayloadAction<I_productLineState>) => {      
+      state.content = {
+        products: state.content.products.filter(product => {
+          if (product.product.title === action.payload.product.title) return;
+          return product;
+        }),
+        total: convertToCentsThenEuros(state.content.total - action.payload.product.price * action.payload.quantity)
       }
     },
     removeInstanceOfProduct: (state, action: PayloadAction<I_productLineState>) => {
       if (action.payload.quantity < 1) return;
-      if (action.payload.quantity === 1) removeProduct(action.payload);
+      if (action.payload.quantity === 1) {
+        /* TODO: as I could not call the removeProductReducer, find a way to simplify it */
+        state.content = {
+          products: state.content.products.filter(product => {
+            if (product.product.title === action.payload.product.title) return;
+            return product;
+          }),
+          total: convertToCentsThenEuros(state.content.total - action.payload.product.price * action.payload.quantity)
+        }
+      }
       else {
         state.content = {
           products: state.content.products.map(product => {
-            if (product === action.payload) {
+            if (product.product.title === action.payload.product.title) {
               return {
                 product: action.payload.product,
                 quantity: action.payload.quantity - 1
@@ -58,12 +86,13 @@ const cartSlice = createSlice({
 
             return product;
           }),
-          total: state.content.total - action.payload.product.price
+          total: convertToCentsThenEuros(state.content.total - action.payload.product.price)
         }
       }
-    }
+    },
+    clearCart: state => { state.content = initialState.content }
   }
 })
 
-export const { addProduct, removeProduct, removeInstanceOfProduct } = cartSlice.actions;
+export const { addProduct, removeProduct, removeInstanceOfProduct, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;

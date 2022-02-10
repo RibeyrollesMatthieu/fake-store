@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { Cart } from '../cart/Cart';
+import { CartIcon } from '../cart-icon/CartIcon';
 import { CategoriesWrapper, CategoryElement, HeaderWrapper, NavWrapper } from './styled';
 
 export const Header = () => {
@@ -37,7 +37,7 @@ export const Header = () => {
           }
         </CategoriesWrapper>
 
-        <Cart />
+        <CartIcon />
       </NavWrapper>
     </HeaderWrapper>
   )

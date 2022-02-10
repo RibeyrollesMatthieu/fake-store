@@ -23,7 +23,7 @@ export const Product = ({ product }: props) => {
       <ProductPrice> {product.price}€ </ProductPrice>
       <ProductRating> {product.rating.rate}/5 ({product.rating.count} votes) </ProductRating>
 
-      <AddToCartButton onClick={() => dispatch(addProduct(product))} >Add to cart</AddToCartButton>
+      <AddToCartButton onClick={() => dispatch(addProduct({product: product, quantity: 1}))} >Add to cart</AddToCartButton>
     </ProductWrapper>
   )
 };

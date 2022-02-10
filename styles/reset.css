@@ -17,6 +17,10 @@ html, body, #__next {
   height: 100%;
 }
 
+main {
+  padding-top: 5rem;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   line-height: 1.5;

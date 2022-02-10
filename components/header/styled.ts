@@ -17,7 +17,6 @@ export const NavWrapper = styled.nav`
     margin-left: auto;
     padding: .5rem;
     height: 3rem;
-    margin: .5rem;
   }
 `;
 

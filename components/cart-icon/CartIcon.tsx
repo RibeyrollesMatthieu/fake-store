@@ -3,7 +3,7 @@ import React from 'react';
 import { useAppSelector } from '../../redux/app/hooks';
 import { CartWrapper, Svg } from './styled';
 
-export const Cart = () => {
+export const CartIcon = () => {
 
   const cart = useAppSelector(cart => cart.cart.content);
 
