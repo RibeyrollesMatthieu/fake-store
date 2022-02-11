@@ -31,7 +31,8 @@ const Cart = () => {
       </CartProducts>
 
       <div>
-        &#8212;&nbsp;&nbsp;Total: {cart.total}€&nbsp;&nbsp;&#8212;
+        &#8212;&nbsp;&nbsp;Total: {cart.total}€&nbsp;&nbsp;&#8212; <br />
+        &#8212;&nbsp;&nbsp;{cart.quantity} products&nbsp;&nbsp;&#8212;
       </div>
 
       <ClearButton onClick={() => dispatch(clearCart())}>Clear the cart</ClearButton>

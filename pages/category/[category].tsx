@@ -28,6 +28,7 @@ const Category = () => {
         .then(() => {
           setCategory(routerCategory);
           setIsLoaded(true);
+          setSorter(Sorters.PRICE_ASC)
         });
     }
 
@@ -35,15 +36,17 @@ const Category = () => {
       fetchData();
     }    
   }, [router.query])
-  
 
   return (
     <>
       <CategoryWrapper >
-
         <Title>{isLoaded ? `Category: ${category}` : ''}</Title>
         
-        <Select options={[Sorters.PRICE_ASC, Sorters.PRICE_DESC]} callback={(value: Sorters) => setSorter(value)} />
+        {
+          isLoaded
+            ? <Select options={[Sorters.PRICE_ASC, Sorters.PRICE_DESC]} callback={(value: Sorters) => setSorter(value)} />
+            : <></>
+        }
 
         <Content isLoaded={isLoaded}>
         {

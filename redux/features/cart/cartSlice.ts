@@ -93,7 +93,7 @@ const cartSlice = createSlice({
             return product;
           }),
           total: convertToCentsThenEuros(state.content.total - action.payload.product.price),
-          quantity: state.content.quantity - action.payload.quantity
+          quantity: state.content.quantity - 1
         }
       }
     },
