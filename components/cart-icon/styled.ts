@@ -6,6 +6,7 @@ export const CartWrapper = styled.a`
   position: relative;
   min-width: 2rem;
   display: block;
+  z-index:99;
 `;
 
 export const Svg = styled.svg`

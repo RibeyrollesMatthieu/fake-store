@@ -2,15 +2,18 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { CategoryWrapper, Content, ProductsWrapper, Title } from '../../components/category/styled';
 import { Product } from '../../components/product/Product';
+import { Select } from '../../components/sorter-select/Select';
 import { Spinner } from '../../components/spinner/Spinner';
 import { I_productType } from '../../redux/app/types';
+import { sortByPrice, Sorters } from '../../utils/sorter';
 
 
 const Category = () => {
 
   const [ category, setCategory ] = useState<string>('');
   const [ products, setProducts ] = useState<I_productType[]>([]);
-  const [ isLoaded, setIsLoaded ] = useState(false);
+  const [ isLoaded, setIsLoaded ] = useState<boolean>(false);
+  const [ sorter, setSorter ] = useState<Sorters>(Sorters.PRICE_ASC);
   const router = useRouter();
 
   useEffect(() => {
@@ -40,12 +43,14 @@ const Category = () => {
 
         <Title>{isLoaded ? `Category: ${category}` : ''}</Title>
         
+        <Select options={[Sorters.PRICE_ASC, Sorters.PRICE_DESC]} callback={(value: Sorters) => setSorter(value)} />
+
         <Content isLoaded={isLoaded}>
         {
           isLoaded
             ? (<ProductsWrapper>
                 {
-                  products.map(product => (
+                  sortByPrice(products, sorter).map(product => (
                     <Product key={product.title} product={product} />
                   ))
                 }
