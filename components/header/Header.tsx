@@ -46,6 +46,13 @@ export const Header = () => {
 
       <NavWrapper id='nav-wrapper'>
         <CategoriesWrapper>
+
+          <CategoryElement>
+            <Link href='/'>
+            <a className={`${'home' === activeCategory ? 'active' : ''}`} onClick={() => {setActiveCategory('home'); closeMenu();}} >Home</a>
+            </Link>
+          </CategoryElement>
+
           {
             categories.map(category => (
               <CategoryElement key={category}>
