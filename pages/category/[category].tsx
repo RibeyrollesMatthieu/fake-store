@@ -5,7 +5,7 @@ import { Product } from '../../components/product/Product';
 import { Select } from '../../components/sorter-select/Select';
 import { Spinner } from '../../components/spinner/Spinner';
 import { I_productType } from '../../redux/app/types';
-import { getAllSorters, sortByPrice, Sorters } from '../../utils/sorter';
+import { sortByPrice, Sorters } from '../../utils/sorter';
 
 
 const Category = () => {
