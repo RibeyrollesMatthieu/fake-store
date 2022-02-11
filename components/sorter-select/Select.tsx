@@ -3,7 +3,7 @@ import { Sorters } from '../../utils/sorter';
 import { SelectWrapper } from './styled';
 
 interface props {
-  options: Sorters[];
+  options: string[];
   callback: Function;
 }
 

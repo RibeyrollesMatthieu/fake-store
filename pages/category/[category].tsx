@@ -5,7 +5,7 @@ import { Product } from '../../components/product/Product';
 import { Select } from '../../components/sorter-select/Select';
 import { Spinner } from '../../components/spinner/Spinner';
 import { I_productType } from '../../redux/app/types';
-import { sortByPrice, Sorters } from '../../utils/sorter';
+import { getAllSorters, sortByPrice, Sorters } from '../../utils/sorter';
 
 
 const Category = () => {
@@ -44,7 +44,7 @@ const Category = () => {
         
         {
           isLoaded
-            ? <Select options={[Sorters.PRICE_ASC, Sorters.PRICE_DESC]} callback={(value: Sorters) => setSorter(value)} />
+            ? <Select options={Object.values(Sorters)} callback={(value: Sorters) => setSorter(value)} />
             : <></>
         }
 
