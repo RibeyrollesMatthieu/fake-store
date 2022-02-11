@@ -18,7 +18,7 @@ html, body, #__next {
 }
 
 main {
-  padding-top: 5rem;
+  padding: 5rem 1rem;
 }
 
 body {
