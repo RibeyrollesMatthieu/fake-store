@@ -28,6 +28,7 @@ export const ProductPrice = styled.div`
 `;
 
 export const ProductRating = styled.div`
+  display: flex;
   margin: auto 0 1rem 0;
 `;
 
@@ -63,4 +64,9 @@ export const ProductCategory = styled.div`
       }
     }
   }
+`;
+
+export const StarsWrapper = styled.div`
+  display: flex;
+  margin-right: .5rem;
 `;
