@@ -30,3 +30,37 @@ export const ProductPrice = styled.div`
 export const ProductRating = styled.div`
   margin: auto 0 1rem 0;
 `;
+
+export const ProductCategory = styled.div`
+  padding-bottom: .5rem;
+  margin-bottom: 1rem;
+  text-align: right;
+  text-transform: capitalize;
+  font-weight: 700;
+  border-bottom: 1px solid #242424;
+  overflow: hidden;
+
+  a {
+    display: inline-block;
+    position: relative;
+    text-decoration: inherit;
+    color: inherit;
+    transition: transform .25s;
+
+    &::before{
+      content: '>';
+      position: absolute;
+      right: 0;
+      transform: translate(2rem, 0);
+      transition: transform .25s;
+    }
+
+    &:hover, &:focus {
+      transform: translate(-1rem, 0);
+
+      &::before {
+        transform: translate(1rem, 0);
+      }
+    }
+  }
+`;
