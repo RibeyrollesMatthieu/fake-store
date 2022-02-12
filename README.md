@@ -5,6 +5,8 @@ The goal here was to create a simple app in order to learn somme technologies an
 Depending on when you're looking at this, the UI may not be that good because I probably haven't dive into it yet 😅  
 This is a personnal project and experience, not meant to be used in a professional way.  
 
+![This is supposed to be a pic of the frontpage](https://user-images.githubusercontent.com/37773349/153710773-19f8a909-5fb1-46ac-a8f3-cbb8df81d8c3.png)  
+
 ## Tech stack
 
 Dillinger uses a number of open source projects to work properly:
