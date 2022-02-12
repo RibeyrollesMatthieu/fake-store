@@ -34,6 +34,7 @@ export const Loader = styled.div`
 `;
 
 export const Svg = styled.svg`
+    height: auto;
     width: 90%;
     fill: none;
 `;
