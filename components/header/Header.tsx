@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { CartIcon } from '../cart-icon/CartIcon';
 import { CategoriesWrapper, CategoryElement, HeaderWrapper, NavBurgerMenu, NavWrapper } from './styled';
@@ -7,6 +8,15 @@ export const Header = () => {
 
   const [ categories, setCategories ] = useState<string[]>([]);
   const [ activeCategory, setActiveCategory ] = useState<string>('');
+  const router = useRouter();
+
+  useEffect(() => {
+    const routerCategory: string = router.query?.category as string;
+
+    if (router.pathname === '/') setActiveCategory('home');
+    else if (router.pathname === '/cart') setActiveCategory('');
+    else if (routerCategory) setActiveCategory(routerCategory);
+  }, [router.query?.category, router]);
 
   useEffect(() => {
     /* 55rem in pixels for a 16px fontsize */
@@ -49,7 +59,7 @@ export const Header = () => {
 
           <CategoryElement>
             <Link href='/'>
-            <a className={`${'home' === activeCategory ? 'active' : ''}`} onClick={() => {setActiveCategory('home'); closeMenu();}} >Home</a>
+              <a className={`${'home' === activeCategory ? 'active' : ''}`} onClick={() => {setActiveCategory('home'); closeMenu();}} >Home</a>
             </Link>
           </CategoryElement>
 
@@ -65,7 +75,7 @@ export const Header = () => {
         </CategoriesWrapper>
       </NavWrapper>
 
-      <CartIcon />
+      <CartIcon closeMenu={closeMenu} />
     </HeaderWrapper>
   )
 };
