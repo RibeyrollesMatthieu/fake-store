@@ -32,6 +32,11 @@ const Home = () => {
   return (
     <>
       <CategoryWrapper>
+
+        {
+          isLoaded ? <h1 style={{textAlign: 'center'}}>All products</h1> : <></>
+        }
+
         {
           isLoaded
             ? <Select options={Object.values(Sorters)} callback={(value: Sorters) => setSorter(value)} />
