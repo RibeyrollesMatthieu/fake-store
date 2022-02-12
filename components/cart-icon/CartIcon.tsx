@@ -14,7 +14,6 @@ export const CartIcon = ({ closeMenu }: props) => {
   return (
     <Link href='/cart' passHref={true}>
       <CartWrapper onClick={() => closeMenu()}>
-
         <Svg width='0' height='0' viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M10 30C11.1046 30 12 29.1046 12 28C12 26.8954 11.1046 26 10 26C8.89543 26 8 26.8954 8 28C8 29.1046 8.89543 30 10 30Z" fill="black"/>
           <path d="M24 30C25.1046 30 26 29.1046 26 28C26 26.8954 25.1046 26 24 26C22.8954 26 22 26.8954 22 28C22 29.1046 22.8954 30 24 30Z" fill="black"/>
