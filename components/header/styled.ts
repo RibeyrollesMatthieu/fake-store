@@ -48,6 +48,8 @@ export const NavBurgerMenu = styled.svg`
 
   @media screen and (max-width: 55rem) {
     display: block;
+    height: auto;
+    width: auto;
   }
 `;
 

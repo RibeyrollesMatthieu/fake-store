@@ -50,7 +50,7 @@ export const Header = () => {
 
   return (
     <HeaderWrapper>
-      <NavBurgerMenu onClick={toggleMenu} viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <NavBurgerMenu width='0' height='0' onClick={toggleMenu} viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 13H17M1 1H17H1ZM1 7H17H1Z" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       </NavBurgerMenu>
 

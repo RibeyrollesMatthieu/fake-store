@@ -11,4 +11,6 @@ export const CartWrapper = styled.a`
 
 export const Svg = styled.svg`
   cursor: pointer;
+  height: auto;
+  width: auto;
 `;
