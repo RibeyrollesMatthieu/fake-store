@@ -1,3 +1,5 @@
+⚠️ Sometimes, the API I use to fetch products is very slow. I'll try to find time to cache every data for a smoother use experience. If you face this problem, sorry I haven't cache it yet 🙏
+
 # Fake ecommerce 
 
 This is a fake ecommerce application.  
