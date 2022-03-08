@@ -11,8 +11,6 @@ This is a personnal project and experience, not meant to be used in a profession
 
 ## Tech stack
 
-Dillinger uses a number of open source projects to work properly:
-
 - [NextJs](https://nextjs.org/)
 - [React](https://reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
